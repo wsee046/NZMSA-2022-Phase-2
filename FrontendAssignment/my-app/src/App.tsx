@@ -5,24 +5,26 @@ import IconButton from '@mui/material/IconButton';
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 import { Box, Button, Grid, Paper, Skeleton } from "@mui/material";
+import { CurrencyBitcoin } from '@mui/icons-material';
+import { forEachChild } from 'typescript';
 
 function App() {
-  const [characterName, setCharacterName] = useState("");
-  const [characterInfo, setCharacterInfo] = useState<null | undefined | object>(undefined);
+  const [country, setCountry] = useState("");
+  const [countryInfo, setCountryInfo] = useState<null | undefined | any>(undefined);
 
-  const DRAGONBALL_BASE_URL = "https://dragon-ball-api.herokuapp.com/api";
+  const COUNTRIES_BASE_URL = "https://restcountries.com/v2";
   return (
     <div>
-      <h1 style={{ marginLeft: "2%" }}>Dragon Ball Character Search</h1>
+      <h1 style={{ marginLeft: "2%" }}>Country Search</h1>
       <div style={{ display: "flex", justifyContent: "center", marginTop: "5%" }}>
         <TextField
           id="search-box"
           className="text"
-          value={characterName}
-          label="Enter a character name"
+          value={country}
+          label="Enter a country"
           variant="outlined"
           onChange={(prop: any) => {
-            setCharacterName(prop.target.value);
+            setCountry(prop.target.value);
           }}
           placeholder="Search..."
           size="small" />
@@ -35,12 +37,12 @@ function App() {
         </IconButton>
       </div>
 
-      {characterInfo === undefined ? (
+      {countryInfo === undefined ? (
         <div></div>
       ) : (
-        <div id="character-result"
+        <div id="country-result"
           style={{
-            maxWidth: "800px",
+            maxWidth: "600px",
             margin: "0 auto",
             padding: "100px 10px 0px 10px"
           }}>
@@ -51,14 +53,36 @@ function App() {
               alignItems="center">
               <Grid item>
                 <Box>
-                  {characterInfo === undefined || characterInfo === null ? (
-                    <h1>Character Not Found</h1>
-                  ) : (
-                    <div>
-                      <h1></h1>
-                    </div>
-                  )}
+                  <h2>{countryInfo.name}</h2>
+                  <img height="150px"
+                    style={{ border: "1pt solid rgba(0,0,0,0.1)" }}
+                    src={countryInfo.flags.png}
+                    alt={countryInfo.name.common} />
                 </Box>
+                <Grid item>
+                  <Box>
+                    {countryInfo === undefined || countryInfo === null ? (
+                      <h2>Country Not Found</h2>
+                    ) : (
+                      <div>
+                        <p>
+                          Name: {countryInfo.name}
+                          <br />
+                          Region: {countryInfo.region}
+                          <br />
+                          Capital: {countryInfo.capital}
+                          <br />
+                          Population: {countryInfo.population}
+                          <br />
+                          Language(s): {getLanguages().toString().replace(",", ", ")}
+                          <br />
+                          Currency: {countryInfo.currencies[0].name}, {countryInfo.currencies[0].symbol}
+                        </p>
+                      </div>
+                    )}
+                  </Box>
+                </Grid>
+
               </Grid>
             </Grid>
           </Paper>
@@ -68,16 +92,25 @@ function App() {
   )
 
   function search() {
-    if (characterName === undefined || characterName === "") {
+    if (country === undefined || country === "") {
       return;
     }
-    axios.get(DRAGONBALL_BASE_URL + "/character/" + characterName.toLowerCase()).then((res) => {
-      setCharacterInfo(res.data);
+    axios.get(COUNTRIES_BASE_URL + "/name/" + country + "?fullText=true").then((res) => {
+      console.log(res.data[0]);
+      setCountryInfo(res.data[0]);
     }).catch(() => {
-      setCharacterInfo(null);
+      setCountryInfo(null);
     });
+
   }
 
+  function getLanguages() {
+    const languages: String[] = [];
+    if (countryInfo !== undefined && countryInfo !== null) {
+      countryInfo.languages.forEach((language: any) => languages.push(language.name))
+    }
+    return languages;
+  }
 
 }
 
