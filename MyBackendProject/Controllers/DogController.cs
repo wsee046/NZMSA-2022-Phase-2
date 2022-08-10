@@ -79,7 +79,7 @@ namespace MyBackendProject.Controllers
         [HttpGet]
         [Route("getVote")]
         [ProducesResponseType(200)]
-        public async Task<IActionResult> GetById(int id) {
+        public async Task<IActionResult> GetVoteById(int id) {
             var res = await _client.GetAsync("/v1/votes/" + id);
             var content = await res.Content.ReadAsStringAsync();
             return Ok(content);

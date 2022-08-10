@@ -21,7 +21,7 @@
             Sends an object in the body containing the "image_id" you want to Vote on, and "value":1 to Up Vote, or "value":0 to Down Vote
             </summary>
         </member>
-        <member name="M:MyBackendProject.Controllers.DogController.GetById(System.Int32)">
+        <member name="M:MyBackendProject.Controllers.DogController.GetVoteById(System.Int32)">
             <summary>
              Gets a specified vote by id
             </summary>

@@ -3422,11 +3422,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\GGPC\\Documents\\MSA\\Backend Tutorial\\MyBackendProject\\MyBackendProject.csproj",
+      "projectUniqueName": "C:\\Users\\GGPC\\Documents\\MSA\\NZMSA-2022-Phase-2\\MyBackendProject\\MyBackendProject.csproj",
       "projectName": "MyBackendProject",
-      "projectPath": "C:\\Users\\GGPC\\Documents\\MSA\\Backend Tutorial\\MyBackendProject\\MyBackendProject.csproj",
+      "projectPath": "C:\\Users\\GGPC\\Documents\\MSA\\NZMSA-2022-Phase-2\\MyBackendProject\\MyBackendProject.csproj",
       "packagesPath": "C:\\Users\\GGPC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\GGPC\\Documents\\MSA\\Backend Tutorial\\MyBackendProject\\obj\\",
+      "outputPath": "C:\\Users\\GGPC\\Documents\\MSA\\NZMSA-2022-Phase-2\\MyBackendProject\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
