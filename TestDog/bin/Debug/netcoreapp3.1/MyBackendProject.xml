@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MyBackendProject</name>
+    </assembly>
+    <members>
+        <member name="M:MyBackendProject.Controllers.DogController.GetRandomDog">
+            <summary>
+            This endpoint gets a random dog
+            </summary>
+        </member>
+        <member name="M:MyBackendProject.Controllers.DogController.GetBreed(System.String)">
+            <summary>
+            This endpoint gets an array of breeds containing the search keyword
+            </summary>
+            <param name="breed">The breed to search for. Can enter part of the name</param>
+            <returns>An array of breeds which match the query parameter passed in. Each element of the array represents a breed and contains information about the breed</returns>
+        </member>
+        <member name="M:MyBackendProject.Controllers.DogController.postVote(MyBackendProject.Models.Vote)">
+            <summary>
+            Sends an object in the body containing the "image_id" you want to Vote on, and "value":1 to Up Vote, or "value":0 to Down Vote
+            </summary>
+        </member>
+        <member name="M:MyBackendProject.Controllers.DogController.GetVoteById(System.Int32)">
+            <summary>
+             Gets a specified vote by id
+            </summary>
+            <param name="id">Id of the vote to search for</param>
+        </member>
+        <member name="M:MyBackendProject.Controllers.DogController.DeleteVoteById(System.String)">
+            <summary>
+            Deletes a vote specified by the input id
+            </summary>
+            <param name="voteId">Id of the vote to delete</param>
+        </member>
+    </members>
+</doc>
